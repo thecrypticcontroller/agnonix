@@ -9,8 +9,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
+          // Three.js core — largest chunk, split so it loads independently
           three: ["three"],
-          r3f: ["@react-three/fiber", "@react-three/drei"]
+          // React Three Fiber + Drei helpers
+          r3f: ["@react-three/fiber", "@react-three/drei"],
+          // Post-processing — bloom/chromatic aberration, desktop-only
+          postfx: ["@react-three/postprocessing", "postprocessing"],
         }
       }
     }
